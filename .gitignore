@@ -1,0 +1,19 @@
+# Variáveis de ambiente — NUNCA subir
+backend/.env
+.env
+
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/*.pyc
+*.pyc
+__pycache__/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Sistema
+.DS_Store
+Thumbs.db
