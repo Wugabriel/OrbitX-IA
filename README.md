@@ -1,22 +1,34 @@
 # OrbitX AI — Plataforma Inteligente para Datacenters Sustentáveis
 
-<p align="center">
-  <img src="frontend/image/logo (1).png" alt="OrbitX Logo" width="120"/>
-</p>
+> **FIAP Global Solution 2026/1 — Disciplina: IOT, IOB & Generative IA**
+> OrbitX AI é uma plataforma de monitoramento inteligente para datacenters desenvolvida em **React 18 + Flask (Python)**. Utiliza **IA Generativa (LLaMA 3.3 70B via Groq)** e dados de **clima espacial da NASA DONKI** para entregar diagnósticos, alertas e recomendações em tempo real.
 
-<p align="center">
-  <strong>FACULDADE DE INFORMÁTICA E ADMINISTRAÇÃO PAULISTA</strong><br/>
-  Análise de Desenvolvimento de Sistemas — Global Solution 2026/1<br/>
-  Disciplina: IOT, IOB & Generative IA
-</p>
+---
 
-<p align="center">
-  <strong>Grupo HyperNova</strong><br/>
-  Fabio Henrique de Souza Eduardo · RM 560416<br/>
-  Lucas Aurelio de Brito Chicote · RM 559366<br/>
-  Gabriel Wu Castro · RM 560210<br/>
-  Renato Kenji Sugaki · RM 559810
-</p>
+## Vídeo de Demonstração
+
+> **Vídeo em gravação — será adicionado em breve.**
+
+---
+
+## Integrantes
+
+| Nome | RM |
+|---|---|
+| Fabio Henrique de Souza Eduardo | RM-560416 |
+| Lucas Aurelio de Brito Chicote | RM-559366 |
+| Gabriel Wu Castro | RM-560210 |
+| Renato Kenji Sugaki | RM-559810 |
+
+---
+
+## Links
+
+| Recurso | Link |
+|---|---|
+| **Repositório GitHub** | https://github.com/Wugabriel/OrbitX-IA |
+| **Groq Console** | https://console.groq.com |
+| **NASA API** | https://api.nasa.gov |
 
 ---
 
@@ -30,41 +42,27 @@ A solução combina **Inteligência Artificial Generativa**, **dados climáticos
 
 ## Funcionalidades
 
-### 1. Monitoramento Inteligente de Datacenters
-Monitoramento contínuo de 12 datacenters brasileiros com exibição em tempo real de:
-- Temperatura dos servidores (atualização a cada 30s)
-- Consumo energético (kWh)
-- Emissão de CO₂ (kg)
-- PUE — Power Usage Effectiveness
-- Status operacional por servidor (Normal / Atenção / Crítico)
+| Módulo | Descrição |
+|---|---|
+| **Monitoramento de Datacenters** | Temperatura, consumo energético (kWh), emissão de CO₂ (kg) e PUE de 12 datacenters brasileiros em tempo real |
+| **Assistente Orbit AI** | Chat com LLaMA 3.3 70B via Groq, contextualizado com os dados reais do datacenter e histórico das últimas 10 mensagens |
+| **Clima Espacial NASA DONKI** | Monitoramento de erupções solares (FLR) e ejeções de massa coronal (CME) com cálculo de risco geomagnético |
+| **Mapa de Impacto** | Mapa interativo Leaflet com localização dos 12 datacenters e zonas polares coloridas pelo risco NASA |
+| **Dashboard Futurista** | Modo escuro/claro, glassmorphism, gradientes espaciais, indicador "Ao Vivo" e atualização automática a cada 30s |
+| **Sugestões Rápidas** | Atalhos de perguntas comuns para análise de temperatura, consumo, servidores críticos e relatório ESG |
 
-### 2. Assistente Inteligente com IA Generativa
-Chat interativo com a **Orbit AI**, assistente especializada em datacenters, alimentada pelo modelo **LLaMA 3.3 70B** via Groq API:
-- Análise contextual com dados reais do datacenter injetados no prompt
-- Histórico de conversa com contexto das últimas 10 mensagens
-- Sugestões rápidas para análises comuns
-- Recomendações automáticas de otimização
+---
 
-### 3. Monitoramento de Clima Espacial (NASA DONKI)
-Integração com a API NASA DONKI para monitoramento de eventos espaciais:
-- Erupções solares (Solar Flares) classificadas por intensidade (X, M, C)
-- Ejeções de Massa Coronal (CME)
-- Cálculo de risco geomagnético: Baixo / Moderado / Alto / Crítico
-- Janela de análise: últimos 7 dias
+## Tecnologias Utilizadas
 
-### 4. Mapa de Impacto Geomagnético
-Mapa interativo global com Leaflet mostrando:
-- Localização dos 12 datacenters monitorados no Brasil
-- Marcadores coloridos pelo status do servidor
-- Zonas polares com intensidade de risco geomagnético da NASA
-- Popup com temperatura e status ao clicar no datacenter
-
-### 5. Dashboard Futurista
-Interface visual premium com:
-- Modo escuro/claro com persistência (localStorage)
-- Glassmorphism e gradientes espaciais
-- Indicador "Ao Vivo" com atualização automática
-- Design responsivo para desktop e mobile
+| Camada | Tecnologia |
+|---|---|
+| Frontend | React 18 + TypeScript + Vite |
+| Estilos | Tailwind CSS v3 · Glassmorphism · Dark/Light mode |
+| Backend | Python 3.10+ · Flask · Flask-CORS · python-dotenv |
+| IA Generativa | Groq API — modelo `llama-3.3-70b-versatile` |
+| Clima Espacial | NASA DONKI API — Solar Flares (FLR) + CME |
+| Mapa | Leaflet + react-leaflet v4 · CartoDB Dark Matter tiles |
 
 ---
 
@@ -88,75 +86,92 @@ Interface visual premium com:
 │  │  • Flares + CMEs │        │  • 12 localidades BR      │  │
 │  └──────────────────┘        └───────────────────────────┘  │
 └────────────────────────┬────────────────────────────────────┘
-                         │ HTTP (proxy Vite → Flask)
-                         │ /api/*
+                         │ HTTP — proxy Vite → Flask (/api/*)
 ┌────────────────────────▼────────────────────────────────────┐
 │                        BACKEND                               │
 │                     Python · Flask                           │
 │                                                              │
-│  GET  /api/metrics       → Gera métricas dos servidores     │
+│  GET  /api/metrics       → Métricas dos 12 servidores       │
 │  POST /api/chat          → Chat com Groq API (LLaMA 3.3)    │
 │  GET  /api/space-weather → NASA DONKI (FLR + CME)           │
 └──────────┬──────────────────────────────────┬───────────────┘
            │                                  │
            ▼                                  ▼
   ┌─────────────────┐              ┌─────────────────────┐
-  │   Groq API      │              │     NASA DONKI API  │
-  │ LLaMA 3.3 70B   │              │  api.nasa.gov/DONKI │
-  │ (IA Generativa) │              │  Solar Flares + CME │
+  │   Groq API      │              │   NASA DONKI API    │
+  │ LLaMA 3.3 70B   │              │ api.nasa.gov/DONKI  │
+  │ (IA Generativa) │              │ Solar Flares + CME  │
   └─────────────────┘              └─────────────────────┘
 ```
 
-### Stack Tecnológica
-
-| Camada       | Tecnologia                                        |
-|--------------|---------------------------------------------------|
-| Frontend     | React 18 · TypeScript · Vite · Tailwind CSS v3    |
-| Backend      | Python 3.10+ · Flask · Flask-CORS · python-dotenv |
-| IA Generativa | Groq API · modelo `llama-3.3-70b-versatile`      |
-| API Externa  | NASA DONKI (Solar Flares, CME)                    |
-| Mapa         | Leaflet + react-leaflet v4 · CartoDB Dark Matter  |
-| Estilo       | Glassmorphism · Dark/Light mode · CSS animations  |
-
 ---
 
-## Pré-requisitos
+## Estrutura do Repositório
 
-- **Python** 3.10 ou superior
-- **Node.js** 18 ou superior
-- Chave de API da **Groq** (gratuita em [console.groq.com](https://console.groq.com))
-- Chave de API da **NASA** (gratuita em [api.nasa.gov](https://api.nasa.gov))
-
----
-
-## Instruções de Execução
-
-### 1. Clone o repositório
-
-```bash
-git clone https://github.com/<seu-usuario>/iaorbitx.git
-cd iaorbitx
+```
+OrbitX-IA/
+├── backend/
+│   ├── app.py                  # API Flask — métricas, chat e clima espacial
+│   ├── requirements.txt        # Dependências Python
+│   └── .env.example            # Modelo de variáveis de ambiente
+├── frontend/
+│   ├── public/
+│   │   └── logo.png
+│   ├── src/
+│   │   ├── App.tsx                       # Layout raiz + tema dark/light
+│   │   ├── components/
+│   │   │   ├── MetricsDashboard.tsx      # KPIs + lista de servidores
+│   │   │   ├── Chat.tsx                  # Chat com Orbit AI
+│   │   │   ├── SpaceWeather.tsx          # Card + modal NASA DONKI
+│   │   │   ├── DatacenterMap.tsx         # Mapa Leaflet interativo
+│   │   │   ├── MessageBubble.tsx
+│   │   │   ├── TypingIndicator.tsx
+│   │   │   └── QuickSuggestions.tsx
+│   │   ├── services/api.ts
+│   │   ├── data/mockMetrics.ts
+│   │   └── index.css
+│   ├── index.html
+│   ├── package.json
+│   ├── tailwind.config.js
+│   └── vite.config.ts
+├── docs/
+├── .gitignore
+└── README.md
 ```
 
-### 2. Configure o Backend
+---
+
+## Como Reproduzir do Zero
+
+### Pré-requisitos
+
+- Python 3.10 ou superior
+- Node.js 18 ou superior
+- Chave de API da **Groq** — gratuita em [console.groq.com](https://console.groq.com)
+- Chave de API da **NASA** — gratuita em [api.nasa.gov](https://api.nasa.gov)
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/Wugabriel/OrbitX-IA.git
+cd OrbitX-IA
+```
+
+### 2. Configurar o Backend
 
 ```bash
 cd backend
 
-# Crie o ambiente virtual
+# Criar ambiente virtual
 python -m venv .venv
 
-# Ative o ambiente virtual
-# Windows:
+# Ativar (Windows)
 .venv\Scripts\activate
-# Linux/macOS:
+# Ativar (Linux/macOS)
 source .venv/bin/activate
 
-# Instale as dependências
+# Instalar dependências
 pip install -r requirements.txt
-
-# Configure as variáveis de ambiente
-# Crie o arquivo .env com o conteúdo abaixo:
 ```
 
 Crie o arquivo `backend/.env`:
@@ -167,75 +182,53 @@ NASA_API_KEY=sua_chave_nasa_aqui
 ```
 
 ```bash
-# Inicie o backend
+# Iniciar o backend
 python app.py
 ```
 
 Backend disponível em: `http://localhost:5000`
 
-### 3. Configure o Frontend
+### 3. Configurar o Frontend
 
 ```bash
 # Em outro terminal, na raiz do projeto:
 cd frontend
 
-# Instale as dependências
 npm install
-
-# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
 Frontend disponível em: `http://localhost:3000`
 
-> O Vite faz proxy automático de `/api/*` → `http://localhost:5000`, portanto não é necessária nenhuma configuração adicional.
-
----
-
-## Estrutura do Projeto
-
-```
-iaorbitx/
-├── backend/
-│   ├── app.py                  # API Flask principal
-│   ├── requirements.txt        # Dependências Python
-│   └── .env                    # Chaves de API (não commitar)
-├── frontend/
-│   ├── public/
-│   │   └── logo.png            # Logo OrbitX
-│   ├── src/
-│   │   ├── App.tsx             # Layout raiz + tema dark/light
-│   │   ├── components/
-│   │   │   ├── MetricsDashboard.tsx  # KPIs + lista de servidores
-│   │   │   ├── Chat.tsx              # Chat com Orbit AI
-│   │   │   ├── SpaceWeather.tsx      # Card + modal NASA DONKI
-│   │   │   ├── DatacenterMap.tsx     # Mapa Leaflet interativo
-│   │   │   ├── MessageBubble.tsx     # Bolha de mensagem do chat
-│   │   │   ├── TypingIndicator.tsx   # Indicador de digitação
-│   │   │   └── QuickSuggestions.tsx  # Atalhos de perguntas
-│   │   ├── services/
-│   │   │   └── api.ts          # Chamadas HTTP ao backend
-│   │   ├── data/
-│   │   │   └── mockMetrics.ts  # Tipos TypeScript e dados iniciais
-│   │   └── index.css           # Estilos globais + glassmorphism
-│   ├── index.html              # Entry point + FOUC prevention
-│   ├── tailwind.config.js      # Config Tailwind (darkMode: class)
-│   └── vite.config.ts          # Config Vite + proxy /api
-├── docs/
-└── README.md
-```
+> O Vite faz proxy automático de `/api/*` → `http://localhost:5000`. Nenhuma configuração adicional necessária.
 
 ---
 
 ## Rotas da API
 
-| Método | Rota                  | Descrição                                        |
-|--------|-----------------------|--------------------------------------------------|
-| GET    | `/api/metrics`        | Métricas em tempo real dos 12 datacenters        |
-| POST   | `/api/chat`           | Envia mensagem ao assistente Orbit AI (LLaMA)    |
-| GET    | `/api/space-weather`  | Dados de clima espacial da NASA (últimos 7 dias) |
+**URL base:** `http://localhost:5000`
 
-### POST `/api/chat` — Exemplo
+### GET `/api/metrics` — Métricas dos Datacenters
+
+**Response:**
+```json
+{
+  "temperature": 48.3,
+  "energyUsage": 1284.5,
+  "carbonEmission": 89.7,
+  "pue": 1.52,
+  "alerts": 3,
+  "servers": [
+    { "id": "Scala Tamboré",  "temp": 68.2, "status": "critico" },
+    { "id": "Equinix SP4",    "temp": 44.1, "status": "normal"  },
+    { "id": "ODATA SP02",     "temp": 71.0, "status": "critico" }
+  ]
+}
+```
+
+---
+
+### POST `/api/chat` — Chat com Orbit AI
 
 **Request:**
 ```json
@@ -248,69 +241,62 @@ iaorbitx/
 **Response:**
 ```json
 {
-  "response": "Com base nos dados atuais, o servidor Scala Tamboré está em estado crítico com 68°C..."
+  "response": "Com base nos dados atuais, os servidores Scala Tamboré (68°C) e ODATA SP02 (71°C) estão em estado crítico. Recomendo verificar o sistema de refrigeração e reduzir a carga de processamento imediatamente."
 }
 ```
 
-### GET `/api/space-weather` — Exemplo de Response
+---
 
+### GET `/api/space-weather` — Clima Espacial NASA DONKI
+
+**Response:**
 ```json
 {
   "risk": "alto",
   "flares": [
-    { "class": "M2.5", "begin": "2026-06-01T14:00Z", "peak": "2026-06-01T14:30Z", "region": 3712 }
+    {
+      "class": "M2.5",
+      "begin": "2026-06-01T14:00Z",
+      "peak": "2026-06-01T14:30Z",
+      "region": 3712
+    }
   ],
-  "cmes": [],
+  "cmes": [
+    {
+      "time": "2026-06-02T08:00Z",
+      "note": "CME detectado com velocidade estimada de 800 km/s."
+    }
+  ],
   "period": "2026-05-30 → 2026-06-06",
   "totalFlares": 3,
   "totalCmes": 1
 }
 ```
 
+**Níveis de risco:**
+
+| Risco | Condição |
+|---|---|
+| `critico` | Erupção solar classe X detectada |
+| `alto` | Erupção solar classe M detectada |
+| `moderado` | Erupção classe C ou 3+ CMEs |
+| `baixo` | Nenhum evento significativo |
+
 ---
 
 ## Datacenters Monitorados
 
-| Datacenter        | Cidade           | UF |
-|-------------------|------------------|----|
-| Scala Tamboré     | Barueri          | SP |
-| Equinix SP4       | São Paulo        | SP |
-| ODATA SP02        | São Paulo        | SP |
-| CTMM Itaú         | São Paulo        | SP |
-| Equinix RJ1       | Rio de Janeiro   | RJ |
-| Ascenty SP1       | Campinas         | SP |
-| BR Digital DF1    | Brasília         | DF |
-| Copel DC Curitiba | Curitiba         | PR |
-| ODATA POA         | Porto Alegre     | RS |
-| Tivit BH          | Belo Horizonte   | MG |
-| Embratel RJ       | Rio de Janeiro   | RJ |
-| NTT Campinas      | Campinas         | SP |
-
----
-
-## Problemática e Valor Agregado
-
-Os datacenters representam uma das maiores demandas energéticas do setor tecnológico. O crescimento acelerado da computação em nuvem e da IA faz com que servidores consumam enormes quantidades de energia diariamente, gerando:
-
-- Riscos de superaquecimento e falhas críticas
-- Altos custos operacionais
-- Emissão de carbono significativa
-
-O OrbitX AI resolve essa problemática com uma plataforma moderna que:
-
-- **Reduz consumo de energia** com recomendações automáticas de IA
-- **Previne superaquecimento** com monitoramento contínuo e alertas
-- **Reduz emissão de carbono** com análises ESG em tempo real
-- **Integra dados espaciais** da NASA para antecipar riscos geomagnéticos
-- **Democratiza o acesso** a análises preditivas avançadas
-
----
-
-## Diferenciais
-
-- IA Generativa contextualizada com dados reais do ambiente
-- Integração com NASA DONKI para correlação entre clima espacial e infraestrutura
-- Mapa global interativo com risco geomagnético em tempo real
-- Interface futurista premium estilo SaaS corporativo
-- Modo escuro/claro com persistência de preferência
-- Atualização automática de métricas a cada 30 segundos
+| Datacenter | Cidade | UF |
+|---|---|---|
+| Scala Tamboré | Barueri | SP |
+| Equinix SP4 | São Paulo | SP |
+| ODATA SP02 | São Paulo | SP |
+| CTMM Itaú | São Paulo | SP |
+| Equinix RJ1 | Rio de Janeiro | RJ |
+| Ascenty SP1 | Campinas | SP |
+| BR Digital DF1 | Brasília | DF |
+| Copel DC Curitiba | Curitiba | PR |
+| ODATA POA | Porto Alegre | RS |
+| Tivit BH | Belo Horizonte | MG |
+| Embratel RJ | Rio de Janeiro | RJ |
+| NTT Campinas | Campinas | SP |
