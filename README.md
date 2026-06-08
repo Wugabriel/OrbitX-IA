@@ -7,7 +7,8 @@
 
 ## Vídeo de Demonstração
 
-> **Vídeo em gravação — será adicionado em breve.**
+> [![Assista ao vídeo de demonstração](https://img.youtube.com/vi/kfpY8qv7_oo/maxresdefault.jpg)](https://youtu.be/kfpY8qv7_oo)
+
 
 ---
 
