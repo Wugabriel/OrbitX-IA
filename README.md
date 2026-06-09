@@ -71,16 +71,16 @@ A solução combina **Inteligência Artificial Generativa**, **dados climáticos
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                        FRONTEND                              │
+│                        FRONTEND                             │
 │                  React 18 + TypeScript + Vite               │
-│                                                              │
+│                                                             │
 │  ┌──────────────────┐        ┌───────────────────────────┐  │
-│  │  MetricsDashboard │        │          Chat             │  │
+│  │  MetricsDashboard│        │          Chat             │  │
 │  │  • KPIs em tempo │        │  • Orbit AI (LLaMA 3.3)   │  │
-│  │    real          │        │  • Histórico de mensagens  │  │
-│  │  • 12 Servidores │        │  • Sugestões rápidas       │  │
+│  │    real          │        │  • Histórico de mensagens │  │
+│  │  • 12 Servidores │        │  • Sugestões rápidas      │  │
 │  │  • Status visual │        └───────────────────────────┘  │
-│  ├──────────────────┤                                        │
+│  ├──────────────────┤                                       │
 │  │  SpaceWeather    │        ┌───────────────────────────┐  │
 │  │  • NASA DONKI    │        │       DatacenterMap       │  │
 │  │  • Risco solar   │        │  • Leaflet + CartoDB      │  │
@@ -89,9 +89,9 @@ A solução combina **Inteligência Artificial Generativa**, **dados climáticos
 └────────────────────────┬────────────────────────────────────┘
                          │ HTTP — proxy Vite → Flask (/api/*)
 ┌────────────────────────▼────────────────────────────────────┐
-│                        BACKEND                               │
-│                     Python · Flask                           │
-│                                                              │
+│                        BACKEND                              │
+│                     Python · Flask                          │
+│                                                             │
 │  GET  /api/metrics       → Métricas dos 12 servidores       │
 │  POST /api/chat          → Chat com Groq API (LLaMA 3.3)    │
 │  GET  /api/space-weather → NASA DONKI (FLR + CME)           │
